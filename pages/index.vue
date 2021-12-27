@@ -1,9 +1,892 @@
 <template>
-  <Tutorial/>
+
+  <div class="home">    
+     <div id="carousel" class="carousel slide carousel-fade m-5" data-bs-ride="carousel">
+                <!-- mixin for image border -->
+            <b-carousel class="carousel-inner" :class="{giveMeABorder: giveMeABorder}" @click="toggleImageBorder" :interval="3000" >
+              
+   
+               <!--The .active class needs to be added to one of the slides otherwise the carousel will not be visible. active class is added at each new iteration -->
+            <CarouselImage  v-for="(image, idx) in carouselImages"
+             :key=image.key
+             :img=image.img
+             :alt=image.alt 
+             :class="{giveMeABorder: giveMeABorder, active: idx==[0]}" @click="toggleImageBorder" 
+            />
+            
+             
+            </b-carousel>
+        </div>
+        <!--Think of the Row as a group of Columns
+This is because columns inside the .row aren’t always laid-out horizontally across the viewport .row is also display:flex by default -->
+        <div class="postion-relative row justify-content-md-center">
+            <div class="postion-relative col lead text-dark fs-4 p-5">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur quis, eveniet molestiae tenetur repudiandae nemo provident dolorem iusto fugit, voluptatum, expedita placeat asperiores nisi corporis? Quia fugit enim quis temporibus. Lorem ipsum dolor
+                sit amet consectetur adipisicing elit. Pariatur quaerat veniam maxime.
+            </div>
+        </div>
+   
+  </div>
 </template>
 
 <script>
+// @ is an alias to /src
+//import mixin for border toggle
+import { imageBorder } from "../mixins/imageBorder";
+import CarouselImage from '../components/CarouselImage.vue';
+
 export default {
-  name: 'IndexPage'
+  //registar mixin
+  mixins: [imageBorder],
+  //name of this file, exporting this for the style
+  name: "Home",
+
+  data() {
+    return {
+      //when the page loads the style for the border will be turned off, changes on click
+      giveMeABorder: false,
+      carouselImages: [
+        {
+          img: "https://images.unsplash.com/photo-1600164318544-79e55da1ac8f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3012&q=80",
+          alt: "Neon pink sign that says let the good times roll.",
+          key: 1
+        },
+        {
+          img: "https://images.unsplash.com/photo-1550950158-d0d960dff51b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3293&q=80",
+          alt: "A photograph of a big juicy burger.",
+          key: 2
+        },
+        {
+          img: "https://images.unsplash.com/photo-1492934867615-2a451e01c063?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1480&q=80",
+          alt: "A photograph of a modern concept dining space",
+          key: 3
+        },
+        {
+          img: "https://images.unsplash.com/photo-1631503190221-0f6a15367926?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3491&q=80",
+          alt: "A photograph of a campari based cocktail garnished with a lime wheel and straw",
+          key: 4
+        },
+      ],
+    };
+  },
+  //need to bind img src to a variable and then add class via toggleImageBorder mixin
+  components: {
+    CarouselImage
+  },
 }
+
 </script>
+
+<style>
+
+@charset "UTF-8";
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS and IE text size adjust after device orientation change,
+ *    without disabling user zoom.
+ */
+@import url("https://fonts.googleapis.com/css2?family=Zen+Antique+Soft&display=swap");
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/**
+ * Remove default margin.
+ */
+body {
+  margin: 0;
+}
+
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/*styleing for toggleImageBorder *********************************************************************************************************************************/
+
+.giveMeABorder {
+  border: 3px dashed pink;
+}
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.
+ */
+[hidden],
+template {
+  display: none;
+}
+
+/* Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+a {
+  background-color: transparent;
+}
+
+/**
+ * Improve readability of focused elements when they are also in an
+ * active/hover state.
+ */
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+b,
+strong {
+  font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+img {
+  border: 0;
+}
+
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+hr {
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+/**
+ * Contain overflow in all browsers.
+ */
+pre {
+  overflow: auto;
+}
+
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+}
+
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+button {
+  overflow: visible;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+button,
+select {
+  text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+input {
+  line-height: normal;
+}
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+input[type="checkbox"],
+input[type="radio"] {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.
+ */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  /* 2 */
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+optgroup {
+  font-weight: bold;
+}
+
+/* Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+.main {
+  padding: 2rem;
+}
+
+.carousel img {
+  max-width: 500px;
+  max-height: 500px;
+}
+
+body {
+  position: relative;
+  min-height: 800px;
+  font-family: "Zen Antique Soft", serif;
+}
+
+body::before {
+  content: "";
+  background-image: url(https://images.genius.com/903167747bef349acbc1c4c4db12662d.300x300x1.jpg);
+  background-size: 200px 200px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.4;
+  z-index: -420;
+}
+
+h1 {
+  font-size: 30px;
+  position: relative;
+  font-size: 2em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  .inner-nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+}
+
+.show > .nav-link {
+  display: none;
+}
+
+a {
+  white-space: nowrap;
+}
+
+.footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+  justify-content: space-evenly;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: end;
+  text-decoration: none;
+  color: #424242;
+
+  /* margin-bottom: -5rem; */
+}
+
+.footer a:hover {
+  color: #424242;
+  -webkit-transform: translateY(-0.5rem);
+  transform: translateY(-0.5rem);
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 550px) {
+  .footer {
+    margin-right: -1rem;
+    margin-left: -1rem;
+  }
+}
+
+.wrapper {
+  width: 100%;
+  padding: 5rem 3rem;
+}
+
+input {
+  display: none;
+}
+
+label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 50px;
+  cursor: pointer;
+  border: 3px solid #3e474f;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+label div:first-child {
+  width: 100%;
+  line-height: 45px;
+  margin-left: 10px;
+  font-size: 1.2em;
+}
+
+.cross {
+  margin-right: 15px;
+  margin-top: 3px;
+}
+
+.cross:before,
+.cross:after {
+  content: "";
+  border-top: 2px solid #3e474f;
+  width: 15px;
+  display: block;
+  margin-top: 18px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.cross:after {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  margin-top: -2px;
+}
+
+.content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  margin: 10px 10px;
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: max-height, 0.5s;
+  transition: max-height, 0.5s;
+}
+
+#app {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+div.product-count-display {
+  margin-bottom: 1rem;
+}
+
+input:checked ~ .content {
+  max-height: 3000px;
+  -webkit-transition: max-height, 1s;
+  transition: max-height, 1s;
+}
+
+input:checked ~ label .cross:before {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+input:checked ~ label .cross:after {
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+.card {
+  margin: 1rem;
+}
+
+@media screen and (max-width: 831px) {
+  .card-body {
+    padding: 0.75rem 1rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .card-body {
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .card-body {
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .card-body {
+    padding: 0.5rem 1rem;
+  }
+}
+
+.counter-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.counter-plus,
+.counter-minus {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 20px;
+  font-family: ‘Open Sans’;
+  font-weight: 900;
+  color: #202020;
+  cursor: pointer;
+}
+
+.count {
+  font-size: 20px;
+  font-family: ‘Open Sans’;
+  font-weight: 900;
+  color: #202020;
+}
+
+.bi,
+.cart-display {
+  color: white;
+}
+
+.cart-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-self: end;
+  margin-right: auto;
+}
+
+.bi {
+  margin-bottom: 0.33rem;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 15vw;
+}
+
+@media screen and (max-width: 1024px) {
+  .card-img-top {
+    height: 20vw;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .card-img-top {
+    height: 23vw;
+  }
+}
+
+@media screen and (max-width: 831px) {
+  .card-img-top {
+    height: 25vw;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .card-img-top {
+    height: 28vw;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .card-img-top {
+    height: 30vw;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .card-img-top {
+    height: 35vw;
+  }
+}
+
+.tooltip-container {
+  overflow: auto;
+}
+
+.tooltip.left {
+  padding: 5px 0;
+  margin-left: -105px;
+}
+
+.items-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.items-container img {
+  width: 100%;
+  height: 15vw;
+}
+
+@media screen and (max-width: 1024px) {
+  .items-container img {
+    height: 20vw;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .items-container img {
+    height: 23vw;
+  }
+}
+
+@media screen and (max-width: 831px) {
+  .items-container img {
+    height: 25vw;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .items-container img {
+    height: 28vw;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .items-container img {
+    height: 30vw;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .items-container img {
+    height: 35vw;
+  }
+}
+
+.cart-content {
+  max-height: 3000px;
+}
+/*# sourceMappingURL=style.css.map */
+</style>

@@ -1,8 +1,8 @@
 <template>
         <ul id="footer" class="footer nav navbar-dark postion-absolute">  
-                  <router-link class="nav-link" to="/">Home</router-link>
-                  <router-link class="nav-link" to="/catering">Catering</router-link>
-                  <router-link class="nav-link" to="/checkout">Checkout</router-link>
+                  <NuxtLink class="nav-link" to="/">Home</NuxtLink>
+                  <NuxtLink class="nav-link" to="/catering">Catering</NuxtLink>
+                  <NuxtLink class="nav-link" to="/checkout">Checkout</NuxtLink>
         </ul>        
 </template>
 
