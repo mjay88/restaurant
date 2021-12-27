@@ -10,8 +10,11 @@
     </svg>
     <transition name="fade" appear>
       <div class="sub-menu" v-if="isOpen">
-        <div v-for="(item, i) in items" :key="i" class="menu-item">
-          <a :href="item.link">{{ item.title }}</a>
+        <div  class="menu-item">
+          <NuxtLink to="/LunchMenu">Lunch</NuxtLink>
+          <NuxtLink to="/DinnerMenu">Dinner</NuxtLink>
+          <NuxtLink to="/DrinkMenu">Drinks</NuxtLink>
+      
         </div>
       </div>
     </transition>
@@ -19,12 +22,29 @@
 </template>
 
 <script>
+
+
 export default {
   name: 'Dropdown',
-  props: ['title', 'items'],
+  props: ['title'],
   data () {
     return {
-      isOpen: false
+      isOpen: false,
+      //data for the drop down menu
+     items: [
+        {
+          title: 'Lunch',
+          link: '/lunch-menu'
+        },
+        {
+          title: 'Dinner',
+          link:'/dinner-menu'
+        },
+        {
+          title: 'Drinks',
+          link: '/drink-menu'
+        }
+      ],
     }
   }
 }
