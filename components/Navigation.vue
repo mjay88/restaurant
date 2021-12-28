@@ -17,7 +17,7 @@
                             <NuxtLink class="nav-link" to="/checkout">Checkout</NuxtLink>
                             <NuxtLink class="nav-link" to="/API">API</NuxtLink>
                             <NuxtLink class="nav-link" to="/Users">Users</NuxtLink>
-                            <NuxtLink class="nav-link" to="/infinite-loading">Infinite Scroll</NuxtLink>
+                            <NuxtLink class="nav-link" to="/infinite-load">Infinite Scroll</NuxtLink>
 
                         </div>
                     </div>
