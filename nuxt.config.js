@@ -18,6 +18,8 @@ export default {
 
     //https://nuxtjs.org/announcements/going-full-static/#too-long-to-read
     target: 'static',
+    //https://stackoverflow.com/questions/63190124/how-can-solve-the-error-babel-maximum-size-500kb-issue-in-server
+    babel: { compact: true },
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: ['@/plugins/bootstrap-vue', { src: '~/plugins/infiniteloading', ssr: false }],
 
