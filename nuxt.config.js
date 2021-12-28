@@ -16,7 +16,7 @@ export default {
     // Global CSS: https://go.nuxtjs.dev/config-css
     css: [],
 
-    //
+    //https://nuxtjs.org/announcements/going-full-static/#too-long-to-read
     target: 'static',
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: ['@/plugins/bootstrap-vue', { src: '~/plugins/infiniteloading', ssr: false }],
