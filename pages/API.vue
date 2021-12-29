@@ -15,7 +15,7 @@
 
 <script>
 //import components
-import Card from "../../restaurant/components/Card.vue"
+import Card from "../components/Card.vue"
 import axios from 'axios'
 
 
