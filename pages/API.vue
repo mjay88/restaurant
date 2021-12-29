@@ -1,6 +1,6 @@
 <template>
        <b-container class="api">
-              <card 
+              <Card 
               v-for="(string,i) of info"
               :key="i"
               :info="string"
