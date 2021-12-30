@@ -27,9 +27,23 @@ export default {
     return {
       loading: true,
       info:null,
-      errored: false
+      errored: false,
+      title: "API"
     }
   },
+//head method for seo
+  head() {
+      return {
+        meta: [
+          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+          {
+            hid: 'API',
+            name: 'API',
+            content: 'API of random dog images'
+          }
+        ]
+      }
+    },
   methods: {
     //need to make (maybe recursive function?) here that will make an api call when get to bottom of screen, and then put that function in mounted
     getInitialDogs() {

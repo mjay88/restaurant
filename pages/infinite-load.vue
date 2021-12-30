@@ -16,6 +16,7 @@ export default {
   name: "Posts",
   data() {
     return {
+      title: "infinite-load",
       items: [],
       page: 1
     };
@@ -51,6 +52,19 @@ export default {
           });
       }, 500);
     }
-  }
+  },
+  //head method for Seo
+    head() {
+      return {
+        meta: [
+          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+          {
+            hid: 'infinite load',
+            name: 'infinite load Page',
+            content: 'infinite load content'
+          }
+        ]
+      }
+    }
 };
 </script>

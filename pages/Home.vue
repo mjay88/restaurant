@@ -45,6 +45,7 @@ export default {
     return {
       //when the page loads the style for the border will be turned off, changes on click
       giveMeABorder: false,
+      title: "Home",
       carouselImages: [
         {
           img: "https://images.unsplash.com/photo-1600164318544-79e55da1ac8f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3012&q=80",
@@ -73,6 +74,19 @@ export default {
   components: {
     CarouselImage
   },
+  //head method for Seo
+    head() {
+      return {
+        meta: [
+          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+          {
+            hid: 'Home',
+            name: 'Home Page',
+            content: 'Home content'
+          }
+        ]
+      }
+    }
 };
 </script>
 

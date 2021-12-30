@@ -25,3 +25,25 @@
         </div>
   </div>
 </template>
+<script>
+export default{
+    data(){
+        return{
+            title: "Catering"
+        }
+    },
+    //head method for seo
+    head() {
+      return {
+        meta: [
+          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+          {
+            hid: 'Catering',
+            name: 'Catering Page',
+            content: 'Catering content'
+          }
+        ]
+      }
+    }
+}
+</script>
