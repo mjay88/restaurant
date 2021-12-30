@@ -65,7 +65,7 @@ export default{
     data() {
        
         return {
-
+            title: "LunchMenu",
         //    products object just for lunch items on menu-lunch.html 
             products: [{
                 name: "Tacos",
@@ -237,6 +237,19 @@ export default{
         },
      methods: {
 
+    },
+    //head method for Seo
+    head() {
+      return {
+        meta: [
+          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+          {
+            hid: 'LunchMenu',
+            name: 'LunchMenu Page',
+            content: 'LunchMenu content'
+          }
+        ]
+      }
     },
     computed: {
         //for lunch items only

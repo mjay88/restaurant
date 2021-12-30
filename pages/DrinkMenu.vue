@@ -77,7 +77,6 @@ export default{
     data() {
        
         return {
-          
         //    products object just for lunch items on menu-lunch.html 
             products: [{
                 name: "Tacos",
@@ -241,8 +240,10 @@ export default{
             }
 
             ],
+            
             //inatializing date object on dt variable
                 dt: new Date(),
+                title: "DrinkMenu"
                 
                 
        
@@ -254,6 +255,19 @@ export default{
          MenuComponent,
          Datepicker
         },
+        //head method for Seo
+        head() {
+      return {
+        meta: [
+          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+          {
+            hid: 'DrinkMenu',
+            name: 'DrinkMenu Page',
+            content: 'DrinkMenu content'
+          }
+        ]
+      }
+    },
     //methods
      methods: {}
     ,

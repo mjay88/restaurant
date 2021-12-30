@@ -227,8 +227,22 @@ export default{
                 type: "drinks"
             }
 
-            ]
+            ],
+            title: "DinnerMenu"
         }
+    },
+    //head method for Seo
+    head() {
+      return {
+        meta: [
+          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+          {
+            hid: 'DinnerMenu',
+            name: 'DinnerMenu Page',
+            content: 'DinnerMenu content'
+          }
+        ]
+      }
     },
     //register components
      components: {

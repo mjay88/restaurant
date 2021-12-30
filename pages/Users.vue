@@ -27,9 +27,23 @@ export default {
     },
     data() {
     return {
+      title: "Users",
       users: [],
     };
   },
+  //head method for Seo
+    head() {
+      return {
+        meta: [
+          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+          {
+            hid: 'User',
+            name: 'User Page',
+            content: 'User content'
+          }
+        ]
+      }
+    },
    methods: {
     formatDate(dateString) {
       let convertedDate = new Date(dateString);

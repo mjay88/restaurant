@@ -40,9 +40,10 @@ export default {
   mixins: [imageBorder],
   //name of this file, exporting this for the style
   name: "Home",
-
+ 
   data() {
     return {
+      title: "index",
       //when the page loads the style for the border will be turned off, changes on click
       giveMeABorder: false,
       carouselImages: [
@@ -73,6 +74,19 @@ export default {
   components: {
     CarouselImage
   },
+  //head method for Seo
+    head() {
+      return {
+        meta: [
+          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+          {
+            hid: 'index',
+            name: 'index Page',
+            content: 'index content'
+          }
+        ]
+      }
+    },
 }
 
 </script>
