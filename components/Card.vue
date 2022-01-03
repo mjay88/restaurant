@@ -22,7 +22,7 @@ export default {
 img {
     max-width: 25rem;
     max-height: 21rem;
-    margin: 2rem 0rem;
+    
 }
 
 </style>
