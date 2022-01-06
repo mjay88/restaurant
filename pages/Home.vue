@@ -77,6 +77,7 @@ export default {
   //head method for Seo
     head() {
       return {
+         title: this.title,
         meta: [
           // hid is used as unique identifier. Do not use `vmid` for it as it will not work
           {
@@ -100,6 +101,7 @@ export default {
  */
 @import url("bootstrap/dist/css/bootstrap.min.css"); 
 @import url("https://fonts.googleapis.com/css2?family=Zen+Antique+Soft&display=swap");
+
 html {
   font-family: sans-serif;
   /* 1 */
