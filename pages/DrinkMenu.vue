@@ -243,7 +243,7 @@ export default{
             
             //inatializing date object on dt variable
                 dt: new Date(),
-                title: "DrinkMenu"
+                title: "Drink Menu"
                 
                 
        

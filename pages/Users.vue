@@ -34,6 +34,7 @@ export default {
   //head method for Seo
     head() {
       return {
+         title: this.title,
         meta: [
           // hid is used as unique identifier. Do not use `vmid` for it as it will not work
           {
